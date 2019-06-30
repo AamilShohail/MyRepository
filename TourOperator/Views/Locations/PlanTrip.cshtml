@@ -1,0 +1,56 @@
+﻿@model TourOperator.Models.Tourist
+
+@{
+    ViewBag.Title = "PlanTrip";
+}
+
+<h2>Here are some tour packages that you may like</h2>
+@using (Html.BeginForm("Index", "CustomBuilt"))
+{
+    <div class="form-group">
+        <div>
+            <input style="margin:5px" type="submit" value="Plan own Trip" class="btn btn-success" />
+        </div>
+    </div>
+}
+<div class="design">
+    <ul>
+        <li title="Adventurous Trip is embarace the adventure">@Html.ActionLink("Adventurous", "DefaultPackage", "Default")</li>
+        <li>@Html.ActionLink("Family", "index", "Packages")</li>
+        <li>@Html.ActionLink("Romantic", "index", "Packages")</li>
+    </ul>
+    <ul>
+        <li>@Html.ActionLink("Wildlife_Safari", "index", "Packages")</li>
+        <li>@Html.ActionLink("Cruise", "index", "Packages")</li>
+        <li>@Html.ActionLink("Pilgrimage", "index", "Packages")</li>
+    </ul>
+</div>
+<style type="text/css">
+    .design ul {
+        position: relative;
+        top: 15%;
+        left: 36%;
+        padding: 0px;
+        display: flex;
+        margin-right: 100%;
+    }
+
+        .design ul li {
+            top: 50%;
+            list-style: none;
+        }
+
+            .design ul li a {
+                display: block;
+                position: relative;
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                font-size: 20px;
+                text-align: center;
+                text-decoration: none;
+                color: #262626;
+                margin: 0 10px;
+            }
+</style>
+

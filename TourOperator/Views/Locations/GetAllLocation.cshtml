@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TourOperator.Models.Location>
+
+<h1>Welcome</h1>
+<ul>
+    <li ng-repeat="l in locations" ng-mouseover="ShowLocation(l.LocationID)">{{l.Title}}</li>
+</ul>
+
+<ul>
+    @if (ViewBag.Places != null)
+    {
+        foreach (var place in ViewBag.Places)
+        {
+            <li ng-mouseover="ShowLocation(l.LocationID)">@place.Title</li>
+            @*<li ng-repeat="l in ViewBag.Places" ng-mouseover="ShowLocation(l.LocationID)">@place.Title</li>*@
+        }
+    }
+</ul>
+
+@section Scripts{
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjpp8-sPKshaWx9Kc1EV-Y8UVxqOQlR9o&callback=initMap"
+            type="text/javascript"></script>
+
+    @* AngularJS library *@
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.js"></script>
+
+    @* google map directive js *@
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+    <script src="//rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js"></script>
+
+    @* here We will add our created js file *@
+    <script src="~/Scripts/Gmap.js"></script>
+}

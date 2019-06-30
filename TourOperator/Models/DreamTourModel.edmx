@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DreamTourModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DreamTourModelStoreContainer">
+    <EntitySet Name="SystemUsers" EntityType="DreamTourModel.Store.SystemUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Locations" EntityType="DreamTourModel.Store.Locations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Packages" EntityType="DreamTourModel.Store.Packages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Accommodations" EntityType="DreamTourModel.Store.Accommodations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemUsers_Administration" EntityType="DreamTourModel.Store.SystemUsers_Administration" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemUsers_Tourist" EntityType="DreamTourModel.Store.SystemUsers_Tourist" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Packages_Default" EntityType="DreamTourModel.Store.Packages_Default" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Packages_Custom_Built" EntityType="DreamTourModel.Store.Packages_Custom_Built" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PackageAccommodation" EntityType="DreamTourModel.Store.PackageAccommodation" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_PackageAccommodation_Accommodation" Association="DreamTourModel.Store.FK_PackageAccommodation_Accommodation">
+      <End Role="Accommodation" EntitySet="Accommodations" />
+      <End Role="PackageAccommodation" EntitySet="PackageAccommodation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PackageAccommodation_Package" Association="DreamTourModel.Store.FK_PackageAccommodation_Package">
+      <End Role="Package" EntitySet="Packages" />
+      <End Role="PackageAccommodation" EntitySet="PackageAccommodation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Administration_inherits_SystemUser" Association="DreamTourModel.Store.FK_Administration_inherits_SystemUser">
+      <End Role="SystemUser" EntitySet="SystemUsers" />
+      <End Role="Administration" EntitySet="SystemUsers_Administration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tourist_inherits_SystemUser" Association="DreamTourModel.Store.FK_Tourist_inherits_SystemUser">
+      <End Role="SystemUser" EntitySet="SystemUsers" />
+      <End Role="Tourist" EntitySet="SystemUsers_Tourist" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Default_inherits_Package" Association="DreamTourModel.Store.FK_Default_inherits_Package">
+      <End Role="Package" EntitySet="Packages" />
+      <End Role="Default" EntitySet="Packages_Default" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Custom_Built_inherits_Package" Association="DreamTourModel.Store.FK_Custom_Built_inherits_Package">
+      <End Role="Package" EntitySet="Packages" />
+      <End Role="Custom_Built" EntitySet="Packages_Custom_Built" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="SystemUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="DateOfBirth" Type="datetime" Nullable="true" />
+    <Property Name="Gender" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ContactNumber" Type="nchar" Nullable="true" MaxLength="15" />
+    <Property Name="ResetPasswordCoded" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="DisplayPicture" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Lat" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Long" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Province" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="District" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Address" Type="varchar" Nullable="true" MaxLength="200" />
+    <Property Name="ImagePath" Type="varchar" Nullable="true" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Packages">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="PackageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageType" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="Status" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="TourFare" Type="decimal" Nullable="true" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="Accommodations">
+    <Key>
+      <PropertyRef Name="AccID" />
+    </Key>
+    <Property Name="AccID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Latitude" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="Longitude" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="AccType" Type="nchar" Nullable="false" MaxLength="15" />
+    <Property Name="ContactNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cost" Type="decimal" Nullable="false" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="SystemUsers_Administration">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="AdminUserName" Type="nchar" Nullable="true" MaxLength="15" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemUsers_Tourist">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="TouristType" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="IsEmailVerified" Type="bit" Nullable="true" />
+    <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="true" />
+    <Property Name="Country" Type="nchar" Nullable="true" MaxLength="30" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Packages_Default">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="DefaultPackages" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="PackageID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Packages_Custom_Built">
+    <Key>
+      <PropertyRef Name="PackageID" />
+    </Key>
+    <Property Name="CustomizablePackages" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="PackageID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PackageAccommodation">
+    <Key>
+      <PropertyRef Name="Accommodations_AccID" />
+      <PropertyRef Name="Packages_PackageID" />
+    </Key>
+    <Property Name="Accommodations_AccID" Type="int" Nullable="false" />
+    <Property Name="Packages_PackageID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PackageAccommodation_Accommodation">
+    <End Role="Accommodation" Type="DreamTourModel.Store.Accommodations" Multiplicity="1" />
+    <End Role="PackageAccommodation" Type="DreamTourModel.Store.PackageAccommodation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accommodation">
+        <PropertyRef Name="AccID" />
+      </Principal>
+      <Dependent Role="PackageAccommodation">
+        <PropertyRef Name="Accommodations_AccID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PackageAccommodation_Package">
+    <End Role="PackageAccommodation" Type="DreamTourModel.Store.PackageAccommodation" Multiplicity="*" />
+    <End Role="Package" Type="DreamTourModel.Store.Packages" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="PackageID" />
+      </Principal>
+      <Dependent Role="PackageAccommodation">
+        <PropertyRef Name="Packages_PackageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Administration_inherits_SystemUser">
+    <End Role="SystemUser" Type="DreamTourModel.Store.SystemUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Administration" Type="DreamTourModel.Store.SystemUsers_Administration" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SystemUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Administration">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tourist_inherits_SystemUser">
+    <End Role="SystemUser" Type="DreamTourModel.Store.SystemUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Tourist" Type="DreamTourModel.Store.SystemUsers_Tourist" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SystemUser">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Tourist">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Default_inherits_Package">
+    <End Role="Package" Type="DreamTourModel.Store.Packages" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Default" Type="DreamTourModel.Store.Packages_Default" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="PackageID" />
+      </Principal>
+      <Dependent Role="Default">
+        <PropertyRef Name="PackageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Custom_Built_inherits_Package">
+    <End Role="Package" Type="DreamTourModel.Store.Packages" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Custom_Built" Type="DreamTourModel.Store.Packages_Custom_Built" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="PackageID" />
+      </Principal>
+      <Dependent Role="Custom_Built">
+        <PropertyRef Name="PackageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DreamTourModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DreamTourEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SystemUsers" EntityType="DreamTourModel.SystemUser" />
+          <EntitySet Name="Locations" EntityType="DreamTourModel.Location" />
+          <EntitySet Name="Packages" EntityType="DreamTourModel.Package" />
+          <EntitySet Name="Accommodations" EntityType="DreamTourModel.Accommodation" />
+          <AssociationSet Name="PackageAccommodation" Association="DreamTourModel.PackageAccommodation">
+            <End Role="Accommodation" EntitySet="Accommodations" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="SystemUser" Abstract="false">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="ResetPasswordCoded" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Administration" BaseType="DreamTourModel.SystemUser" >
+          <Property Name="AdminUserName" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tourist" BaseType="DreamTourModel.SystemUser" >
+          <Property Name="TouristType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IsEmailVerified" Type="Boolean" />
+          <Property Name="ActivationCode" Type="Guid" />
+          <Property Name="Country" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lat" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Long" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TourFare" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Accommodations" Relationship="DreamTourModel.PackageAccommodation" FromRole="Package" ToRole="Accommodation" />
+        </EntityType>
+        <EntityType Name="Default" BaseType="DreamTourModel.Package" >
+          <Property Name="DefaultPackages" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Custom_Built" BaseType="DreamTourModel.Package" >
+          <Property Name="CustomizablePackages" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Accommodation">
+          <Key>
+            <PropertyRef Name="AccID" />
+          </Key>
+          <Property Name="AccID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Latitude" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Longitude" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AccType" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Packages" Relationship="DreamTourModel.PackageAccommodation" FromRole="Accommodation" ToRole="Package" />
+        </EntityType>
+        <Association Name="PackageAccommodation">
+          <End Type="DreamTourModel.Accommodation" Role="Accommodation" Multiplicity="*" />
+          <End Type="DreamTourModel.Package" Role="Package" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DreamTourModelStoreContainer" CdmEntityContainer="DreamTourEntities">
+    <EntitySetMapping Name="SystemUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(DreamTourModel.SystemUser)">
+        <MappingFragment StoreEntitySet="SystemUsers">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="ResetPasswordCoded" ColumnName="ResetPasswordCoded" />
+          <ScalarProperty Name="DisplayPicture" ColumnName="DisplayPicture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DreamTourModel.Administration)">
+        <MappingFragment StoreEntitySet="SystemUsers_Administration">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AdminUserName" ColumnName="AdminUserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DreamTourModel.Tourist)">
+        <MappingFragment StoreEntitySet="SystemUsers_Tourist">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TouristType" ColumnName="TouristType" />
+          <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="IsTypeOf(DreamTourModel.Location)">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Long" ColumnName="Long" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="IsTypeOf(DreamTourModel.Package)">
+        <MappingFragment StoreEntitySet="Packages">
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+          <ScalarProperty Name="PackageType" ColumnName="PackageType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="TourFare" ColumnName="TourFare" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DreamTourModel.Default)">
+        <MappingFragment StoreEntitySet="Packages_Default">
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+          <ScalarProperty Name="DefaultPackages" ColumnName="DefaultPackages" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(DreamTourModel.Custom_Built)">
+        <MappingFragment StoreEntitySet="Packages_Custom_Built">
+          <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+          <ScalarProperty Name="CustomizablePackages" ColumnName="CustomizablePackages" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accommodations">
+      <EntityTypeMapping TypeName="IsTypeOf(DreamTourModel.Accommodation)">
+        <MappingFragment StoreEntitySet="Accommodations">
+          <ScalarProperty Name="AccID" ColumnName="AccID" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="AccType" ColumnName="AccType" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PackageAccommodation" TypeName="DreamTourModel.PackageAccommodation" StoreEntitySet="PackageAccommodation">
+      <EndProperty Name="Accommodation">
+        <ScalarProperty Name="AccID" ColumnName="Accommodations_AccID" />
+      </EndProperty>
+      <EndProperty Name="Package">
+        <ScalarProperty Name="PackageID" ColumnName="Packages_PackageID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

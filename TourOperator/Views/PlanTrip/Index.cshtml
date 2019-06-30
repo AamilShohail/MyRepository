@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TourOperator.Models.Package>
+
+@{
+    Layout = null;
+}
+<title>Tour With CodeDream Team</title>
+
+<div class="tourtype">
+    <ul>
+        @foreach (var type in Model)
+        {
+            <li>
+                <a href="#">@type.PackageType</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<style type="text/css">
+    .tourtype {
+        position: relative;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 5px;
+        display: flex;
+        margin-right: 85%;
+        text-decoration:none;
+        list-style:none;
+    }
+    .tourtype li{
+        list-style:none;
+        text-decoration:none;
+    }
+
+        .tourtype li a {
+            position: center;
+            text-align: center;
+            padding: 15px;
+            align-items: flex-end;
+            display: block;
+            line-height: 50px;
+            font-size: 20px;
+            text-decoration-color: snow;
+            color: Highlight;
+        }
+       
+</style>
+
+

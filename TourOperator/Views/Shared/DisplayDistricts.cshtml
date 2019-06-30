@@ -1,0 +1,11 @@
+﻿@model TourOperator.Models.Location
+<div class="table">
+    <select class="form-control" id="selectedValue" onchange="GoLocation(this.value)">
+        <option>--Select District--</option>
+
+        @foreach (var item in ViewBag.ListofDistricts)
+        {
+            <option value="@item.LocationID" id="did">@item.District</option>
+        }
+    </select>
+</div>

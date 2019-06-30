@@ -1,0 +1,236 @@
+body{
+	margin: 0;
+	padding: 0;
+
+}
+.shadow{
+	position: relative;
+	top: 55px;
+}
+
+
+.form-area{
+	width: 500px;
+	height: 250px;
+	margin: 60px auto 0;
+	position: relative;
+	background: rgba(0,0,0,0.4);
+	text-align: center;
+	margin-top: 60px;
+	padding: 35px;
+	border: 3px solid #fff;
+	-webkit-border-radius:70px 0 70px 0;
+	-moz-border-radius:70px 0 70px 0;
+	border-radius: 70px 0 70px 0;
+}
+.form-area h2{
+	margin-bottom: 45px;
+	color: #fff;
+}
+
+
+
+
+
+input{
+	width: 85%;
+	height: 20px;
+	border-radius: 15px 0 15px 0;
+	border: 2px solid #fff;
+	background-color: transparent;
+	color: #fff;
+}
+.btn{
+	display: inline-block;
+	height: 40px;
+	width: 150px;
+	line-height: 40px;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	background: tomato;
+	border-radius: 25px;
+	color: #fff;
+	text-transform:uppercase;
+	margin-top: 20px;
+	cursor: pointer; 
+	text-decoration: none;
+}
+.btn-txt{
+	display: block;
+	height: 100%;
+	position: relative;
+	top: 0;
+	-webkit-transition:top .6s;
+	-moz-transition:top .6s;
+	-ms-transition:top .6s;
+	-o-transition:top 0.6s;
+	width: 100%;
+}
+.btn:hover .btn-txt{
+	top: -100%;
+}
+
+.test{
+	position:relative;
+	top: 50%;
+	left: 100%
+	transform: translate(-50%,-50%);
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+.test li{
+	list-style: none;
+	font-family: arial;
+	font-size: 2em;
+	color: #484848;
+	text-shadow: none;
+	animation: animate 3s infinite linear;
+}
+@keyframes animate{
+	0%{
+		color: #484848;
+		text-shadow: 0 0 7px violet, 0 0 20px #ff6c00;
+	}
+	18%{
+		color: #484848;
+		text-shadow: 0 0 7px indigo, 0 0 20px #ff6c00;
+	}
+	20%{
+		color: #fff900;
+		text-shadow: 0 0 7px blue, 0 0 20px #ff6c00;
+	}
+	30%{
+		color: #484848;
+		text-shadow: none;
+	}
+	35%{
+		color: #fff900;
+		text-shadow: 0 0 7px green, 0 0 20px #ff6c00;
+	}
+	70%{
+		color: #484848;
+		text-shadow: none;
+	}
+	85%{
+		color:green;
+		text-shadow: 0 0 7px gold, 0 0 20px #ff6c00;
+	}
+	90%{
+		color: #484848;
+		text-shadow: 0 0 7px orange, 0 0 20px #ff6c00;
+	}
+	100%{
+		color: #484848;
+		text-shadow: 0 0 7px red, 0 0 20px #ff6c00;
+	}
+}
+
+.test li:nth-child(1){
+	animation-delay: 1.2s;
+}
+.test li:nth-child(2){
+	animation-delay: 1.4s;
+}.test li:nth-child(3){
+	animation-delay: .6s;
+}.test li:nth-child(4){
+	animation-delay: 1.8s;
+}.test li:nth-child(5){
+	animation-delay: 1s;
+}.test li:nth-child(6){
+	animation-delay: 1.2s;
+}.test li:nth-child(7){
+	animation-delay: 1.4s;
+}.test li:nth-child(8){
+	animation-delay: 1.6s;
+}.test li:nth-child(8){
+	animation-delay: 1.8s;
+}
+
+
+
+.fate {
+	position: relative;
+	top: 15%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	padding: 0;
+	display: flex;
+	margin-right: 100%;
+}
+.fate  li{
+	list-style: none;
+}
+.fate  li a{
+	display: block;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 20px;
+	text-align: center;
+	text-decoration: none;
+	color: #262626;
+	margin: 0 10px;
+	transition: .5s;
+}
+.fate li a span{
+	position: absolute;
+	transition:transform .5s;
+}
+.fate li a span:nth-child(1),
+.fate li a span:nth-child(3){
+	width: 100%;
+	height: 1px;
+	background-color: #262626;
+}
+.fate li a span:nth-child(1){
+	top: 0;
+	left: 0;
+	transform-origin: right;
+}
+.fate li a:hover span:nth-child(1){
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform .5s;
+}
+.fate li a span:nth-child(3){
+	bottom: 0;
+	left: 0;
+	transform-origin: right;
+}
+.fate li a:hover span:nth-child(3){
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform .5s;
+}
+
+.fate li a span:nth-child(2),
+.fate li a span:nth-child(4){
+	width: 1px;
+	height: 100%;
+	background-color: #262626;
+}
+.fate  li a span:nth-child(2){
+	top: 0;
+	left: 0;
+	transform: scaleY(0) ;
+	transform-origin: bottom;
+}
+.fate  li a:hover span:nth-child(2){
+	transform: scaleY(1);
+	transform-origin: top;
+	transition: transform .5s;
+}
+.fate li a span:nth-child(4){
+	top: 0;
+	right: 0;
+	transform: scaleY(0) ;
+	transform-origin: bottom;
+}
+.fate li a:hover span:nth-child(4){
+	transform: scale(1);
+	transform-origin: bottom;
+	transition: transform .5s;
+}

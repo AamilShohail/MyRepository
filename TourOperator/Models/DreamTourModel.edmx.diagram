@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c6df3f29f5694fc5ae1f7b4fe743b5ed" Name="Diagram1">
+        <EntityTypeShape EntityType="DreamTourModel.SystemUser" Width="1.5" PointX="10.125" PointY="0.5" />
+        <EntityTypeShape EntityType="DreamTourModel.Administration" Width="1.5" PointX="9" PointY="4.25" />
+        <InheritanceConnector EntityType="DreamTourModel.Administration" />
+        <EntityTypeShape EntityType="DreamTourModel.Tourist" Width="1.5" PointX="11.25" PointY="4.25" />
+        <InheritanceConnector EntityType="DreamTourModel.Tourist" />
+        <EntityTypeShape EntityType="DreamTourModel.Location" Width="1.5" PointX="6.875" PointY="5.5" />
+        <EntityTypeShape EntityType="DreamTourModel.Package" Width="2" PointX="5.25" PointY="0.625" />
+        <EntityTypeShape EntityType="DreamTourModel.Default" Width="1.5" PointX="6.25" PointY="3.875" />
+        <InheritanceConnector EntityType="DreamTourModel.Default" />
+        <EntityTypeShape EntityType="DreamTourModel.Custom_Built" Width="2" PointX="3.5" PointY="3.875" />
+        <InheritanceConnector EntityType="DreamTourModel.Custom_Built" />
+        <EntityTypeShape EntityType="DreamTourModel.Accommodation" Width="1.75" PointX="1" PointY="0.5" />
+        <AssociationConnector Association="DreamTourModel.PackageAccommodation" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

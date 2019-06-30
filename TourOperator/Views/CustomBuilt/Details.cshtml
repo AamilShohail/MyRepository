@@ -1,0 +1,58 @@
+﻿@model TourOperator.Models.Custom_Built
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Custom_Built</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomizablePackages)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomizablePackages)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PackageType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PackageType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TourFare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TourFare)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

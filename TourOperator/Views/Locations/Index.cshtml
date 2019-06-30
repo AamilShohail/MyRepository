@@ -1,0 +1,78 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<TourOperator.Models.Location>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add a Location", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Title)
+        </th>
+        <th>
+            @Html.DisplayName("Latitude")
+        </th>
+        <th>
+            @Html.DisplayName("Longitude")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Province)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().District)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Long)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Province)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePath)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LocationID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LocationID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LocationID })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, Page => Url.Action("Index" , new { Page}),(
+        new PagedListRenderOptions()
+        {
+            Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true,DisplayItemSliceAndTotal = true
+        }
+ ))

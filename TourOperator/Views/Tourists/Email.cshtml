@@ -1,0 +1,21 @@
+﻿@model TourOperator.Models.Tourist
+
+@{
+    ViewBag.Title = "Account Verification";
+}
+
+<h2>Registration Successfull</h2>
+
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    <div class="alert alert-danger">
+        <strong>Your Account has been activated Successfully. Click here to @Html.ActionLink("Login","Login")</strong>
+    </div> 
+}
+else
+{
+    <div class="alert alert-danger">
+        <strong>Error!</strong>@ViewBag.Message
+    </div> 
+}
+
